@@ -1,5 +1,8 @@
 # flooring calculator by Daniel Koman
 
+import sys
+sys.path.append("../lib") # add ../lib to system path to allow import of modules from lib folder (github data structure)
+
 from prettytable import PrettyTable # import PrettyTable from prettytable library
 from decimal import Decimal # use decimal.Decimal to avoid wonky python mathematics
 
