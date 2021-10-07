@@ -7,9 +7,10 @@ from prettytable import PrettyTable # import PrettyTable from prettytable librar
 from decimal import Decimal # use decimal.Decimal to avoid wonky python mathematics
 
 class House:
-	def __init__(self, name, sqFt):
+	def __init__(self, name, sqFt, data):
 		self.name = name
 		self.sqFt = sqFt
+		self.colorData = data
 	
 	def display(self):
 		print(f"{self.name} will need a total of {self.sqFt} square feet of flooring material!") # print total square units needed
@@ -25,16 +26,16 @@ colorData = {} # create a dictionary to store running area totals of each color
 squareFeet = 0 # zero square feet to begin
 finished = False
 while finished == False:
-	room = input("Which room? ") # prompt user for room name
-	if room == "": # if user hit enter at the room prompt without entering data
+	roomName = input("Which room? ") # prompt user for room name
+	if roomName == "": # if user hit enter at the room prompt without entering data
 		done = input("Are you finished adding rooms? (Y or N)") # make sure user is done
 		if done == "Y" or done == "y": # if confirmed,
 			finished = True # we set finished to true to skip next loop iteration
 		continue # restarting the loop will either end it (because finished == True), or begin from the start again
-	room = room.title() # capitalize all first letters (titlecase)
+	roomName = roomName.title() # capitalize all first letters (titlecase)
 	length = input("What is the length in feet? ") # prompt user for room length
 	width = input("What is the width in feet? ") # prompt user for room width
-	color = input(f"What color floor in {room}? ") # prompt user for floor color
+	color = input(f"What color floor in {roomName}? ") # prompt user for floor color
 
 	if length == "" or width == "" or color == "": # if user entered a room name but failed to enter data in any of the three subsequent fields,
 		print("Please do not omit any room data. Let's try that again...") # complain to the user for having omitted data
@@ -44,7 +45,7 @@ while finished == False:
 
 	thisRoomArea = Decimal(length) * Decimal(width) # use decimal.Decimal to avoid wonky python mathematics
 
-	roomData.append([room, length, width, thisRoomArea, color]) # add room data to list
+	roomData.append([roomName, length, width, thisRoomArea, color]) # add room data to list
 
 	if color in colorData: # check first to see if color key already exists in dictionary
 		colorData[color] += thisRoomArea # add square feet of this color to dictionary total
@@ -64,7 +65,10 @@ print(table) # print the table to the terminal
 
 for color in colorData: # iterate through colorData
 	print(f"You will need {colorData[color]} square feet of {color}.") # to print how much of each color is needed
-house = House(houseName, squareFeet)
+house = House(houseName, squareFeet, colorData)
 house.display()
+
+#print(house.colorData)
+
 
 
