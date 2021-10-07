@@ -6,10 +6,18 @@ sys.path.append("../lib") # add ../lib to system path to allow import of modules
 from prettytable import PrettyTable # import PrettyTable from prettytable library
 from decimal import Decimal # use decimal.Decimal to avoid wonky python mathematics
 
+class House:
+	def __init__(self, name, sqFt):
+		self.name = name
+		self.sqFt = sqFt
+	
+	def display(self):
+		print(f"{self.name} will need a total of {self.sqFt} square feet of flooring material!") # print total square units needed
+
 print("Welcome to Flooring Calculator 1.0! Please enter a name for your house:")
-house = input("House name? ")
-house = house.title() # capitalize all first letters (titlecase)
-print(f"Thanks! Please input each room name in {house}, followed by dimensions:")
+houseName = input("House name? ")
+houseName = houseName.title() # capitalize all first letters (titlecase)
+print(f"Thanks! Please input each room name in {houseName}, followed by dimensions:")
 
 roomData = [] # create a list to store room data
 colorData = {} # create a dictionary to store running area totals of each color
@@ -49,12 +57,14 @@ table.field_names = ['Room', 'Length', 'Width', 'SqFt', 'Color'] # set table fie
 for room in roomData: # iterate through list to add table entries and calculate total area
 	squareFeet += room[3] # add squareFeet to running total
 	table.add_row(room) # add room data to the table
-table.title = house # use the house name as the table title
+table.title = houseName # use the house name as the table title
 table.sortby = "Room" # sort the table object by room name
 table.align = 'r' # right-align cell content
 print(table) # print the table to the terminal
 
 for color in colorData: # iterate through colorData
 	print(f"You will need {colorData[color]} square feet of {color}.") # to print how much of each color is needed
-print(f"You will need a total of {squareFeet} square feet of flooring material!") # print total square units needed
+house = House(houseName, squareFeet)
+house.display()
+
 
