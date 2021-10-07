@@ -7,50 +7,58 @@ from prettytable import PrettyTable # import PrettyTable from prettytable librar
 from decimal import Decimal # use decimal.Decimal to avoid wonky python mathematics
 
 class House:
-	def __init__(self, name, sqFt, data):
+	def __init__(self, name, sqFt):
 		self.name = name
 		self.sqFt = sqFt
-		self.colorData = data
-
-		self.colorCosts = {
-		  "Red":Decimal(0.50),
-		  "Orange":Decimal(0.51),
-		  "Yellow":Decimal(0.52),
-		  "Green":Decimal(0.53),
-		  "Blue":Decimal(0.54),
-		  "Cyan":Decimal(0.55),
-		  "Purple":Decimal(0.56),
-		  "White":Decimal(0.57),
-		  "Black":Decimal(0.58),
-		  "Brown":Decimal(0.59),
-		  "Magenta":Decimal(0.60),
-		  "Tan":Decimal(0.61),
-		  "Olive":Decimal(0.62),
-		  "Maroon":Decimal(0.63),
-		  "Navy":Decimal(0.64),
-		  "Aquamarine":Decimal(0.65),
-		  "Turquoise":Decimal(0.66),
-		  "Silver":Decimal(0.67),
-		  "Lime":Decimal(0.68),
-		  "Teal":Decimal(0.69),
-		  "Indigo":Decimal(0.70),
-		  "Violet":Decimal(0.71),
-		  "Pink":Decimal(0.72),
-		  "Gray":Decimal(0.73),
-		  "Peach":Decimal(0.74),
-		}
 	
 	def display(self):
 		print(f"{self.name} will need a total of {self.sqFt} square feet of flooring material!") # print total square units needed
+
+class ShoppingList:
+	def __init__(self, name, data):
+		self.name = name
+		self.colorData = data
+		self.colorCosts = {
+			  "Red":Decimal(0.50),
+			  "Orange":Decimal(0.51),
+			  "Yellow":Decimal(0.52),
+			  "Green":Decimal(0.53),
+			  "Blue":Decimal(0.54),
+			  "Cyan":Decimal(0.55),
+			  "Purple":Decimal(0.56),
+			  "White":Decimal(0.57),
+			  "Black":Decimal(0.58),
+			  "Brown":Decimal(0.59),
+			  "Magenta":Decimal(0.60),
+			  "Tan":Decimal(0.61),
+			  "Olive":Decimal(0.62),
+			  "Maroon":Decimal(0.63),
+			  "Navy":Decimal(0.64),
+			  "Aquamarine":Decimal(0.65),
+			  "Turquoise":Decimal(0.66),
+			  "Silver":Decimal(0.67),
+			  "Lime":Decimal(0.68),
+			  "Teal":Decimal(0.69),
+			  "Indigo":Decimal(0.70),
+			  "Violet":Decimal(0.71),
+			  "Pink":Decimal(0.72),
+			  "Gray":Decimal(0.73),
+			  "Peach":Decimal(0.74),
+			}
+	def display(self):
 		print("Here's your shopping list:")
 		totalCost = Decimal(0)
 		for color in self.colorData: # iterate through colorData
+			print("")
 			print(f"You will need {self.colorData[color]} square feet of {color},") # to print how much of each color is needed
 			# catch keyerror exception here
 			cost = Decimal(self.colorData[color] * self.colorCosts[color]) # multiply square feet by price per square foot
 			print(f"costing ${cost} total.")
 			totalCost += cost
+		print("")
 		print(f"Total cost for flooring materials in {self.name} is ${totalCost}.")
+		
+	
 			
 
 print("Welcome to Flooring Calculator 1.0! Please enter a name for your house:")
@@ -101,8 +109,11 @@ table.sortby = "Room" # sort the table object by room name
 table.align = 'r' # right-align cell content
 print(table) # print the table to the terminal
 
-house = House(houseName, squareFeet, colorData)
+house = House(houseName, squareFeet)
 house.display()
+
+shoppingList = ShoppingList(houseName, colorData)
+shoppingList.display()
 
 #print(house.colorData)
 
