@@ -45,6 +45,7 @@ class ShoppingList:
 			  "Gray":Decimal(0.73),
 			  "Peach":Decimal(0.74),
 			}
+
 	def display(self):
 		print("Here's your shopping list:")
 		totalCost = Decimal(0)
@@ -57,9 +58,6 @@ class ShoppingList:
 			totalCost += cost
 		print("")
 		print(f"Total cost for flooring materials in {self.name} is ${totalCost}.")
-		
-	
-			
 
 print("Welcome to Flooring Calculator 1.0! Please enter a name for your house:")
 houseName = input("House name? ")
@@ -109,11 +107,11 @@ table.sortby = "Room" # sort the table object by room name
 table.align = 'r' # right-align cell content
 print(table) # print the table to the terminal
 
-house = House(houseName, squareFeet)
-house.display()
+house = House(houseName, squareFeet) # instantiate a new House object
+house.display() # print data to terminal via House's display() method
 
-shoppingList = ShoppingList(houseName, colorData)
-shoppingList.display()
+shoppingList = ShoppingList(houseName, colorData) # instantiate a new ShoppingList object
+shoppingList.display() # print data to terminal via ShoppingList's display() method
 
 #print(house.colorData)
 
