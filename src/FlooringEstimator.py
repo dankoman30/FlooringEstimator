@@ -76,7 +76,12 @@ class ShoppingList:
 		print("")
 		print(f"TOTAL COST FOR FLOORING MATERIALS IN {self.name} IS ${totalCost}.")
 
-print("Welcome to Flooring Calculator 1.0! Please enter a name for your house:")
+print("Welcome to Flooring Calculator 3.0! In this application, you will enter")
+print("a house name, followed by its room names and specifications.  For each")
+print("room, you will enter its dimensions and the color of the flooring.  The")
+print("program will output a shopping list for you to take to the flooring store,")
+print("complete with cost information for your budgeting needs.  Let's get started!")
+print("Please enter a name for your house:")
 houseName = input("House name? ")
 houseName = houseName.title() # capitalize all first letters (titlecase)
 print(f"Thanks! Please input each room name in {houseName}, followed by dimensions:")
