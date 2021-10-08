@@ -24,7 +24,8 @@ class House:
 		self.sqFt = sqFt
 	
 	def display(self):
-		print(f"{self.name} will need a total of {self.sqFt} square feet of flooring material!") # print total square units needed
+		print(f"{self.name} WILL NEED A TOTAL OF {self.sqFt} SQUARE FEET OF FLOORING MATERIAL!") # print total square units needed
+		print("")
 
 class ShoppingList:
 	def __init__(self, name, data):
@@ -62,8 +63,7 @@ class ShoppingList:
 		print("Here's your shopping list:")
 		totalCost = Decimal('0.00')
 		for color in self.colorData: # iterate through colorData
-			print("")
-			print(f"You will need {self.colorData[color]} square feet of {color},") # to print how much of each color is needed
+			print(f"  ☼ {self.colorData[color]} square feet of {color}") # to print how much of each color is needed
 			# catch keyerror exception here
 			cost = Decimal('0.00')
 			if color in self.colorCosts: # check if color exists in colorCosts dictionary
@@ -71,10 +71,10 @@ class ShoppingList:
 			else:
 				thisColorCost = Decimal('0.00') # if color is not in colorCosts dictionary, use 0. this prevents keyerror on nonexistent key
 			cost = Decimal(self.colorData[color] * thisColorCost) # multiply square feet by price per square foot
-			print(f"costing ${cost} total.")
+			print(f"      (costing ${cost} total).")
 			totalCost += cost
 		print("")
-		print(f"Total cost for flooring materials in {self.name} is ${totalCost}.")
+		print(f"TOTAL COST FOR FLOORING MATERIALS IN {self.name} IS ${totalCost}.")
 
 print("Welcome to Flooring Calculator 1.0! Please enter a name for your house:")
 houseName = input("House name? ")
