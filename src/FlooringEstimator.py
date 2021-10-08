@@ -6,6 +6,18 @@ sys.path.append("../lib") # add ../lib to system path to allow import of modules
 from prettytable import PrettyTable # import PrettyTable from prettytable library
 from decimal import Decimal # use decimal.Decimal to avoid wonky python mathematics
 
+class Room:
+	def __init__(self, name, length, width, area, color):
+		self.name = name
+		self.length = length
+		self.width = width
+		self.area = area
+		self.color = color
+		
+	def list(self):
+		return [self.name, self.length, self.width, self.area, self.color]
+		
+
 class House:
 	def __init__(self, name, sqFt):
 		self.name = name
@@ -92,14 +104,15 @@ while finished == False:
 
 	color = color.title() # title case room color to avoid dictionary duplicates
 
-	thisRoomArea = Decimal(length) * Decimal(width) # use decimal.Decimal to avoid wonky python mathematics
+	area = Decimal(length) * Decimal(width) # use decimal.Decimal to avoid wonky python mathematics
 
-	roomData.append([roomName, length, width, thisRoomArea, color]) # add room data to list
+	room = Room(roomName, length, width, area, color) # instantiate room object with given parameters
+	roomData.append(room.list()) # add room data to list
 
 	if color in colorData: # check first to see if color key already exists in dictionary
-		colorData[color] += thisRoomArea # add square feet of this color to dictionary total
+		colorData[color] += area # add square feet of this color to dictionary total
 	else:
-		colorData[color] = thisRoomArea # create new key with new color
+		colorData[color] = area # create new key with new color
 
 # table stuff
 table = PrettyTable() # instantiate a new table object
