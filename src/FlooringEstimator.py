@@ -16,7 +16,6 @@ class Room:
 
 	def list(self):
 		return [self.name, self.length, self.width, self.area, self.color]
-		
 
 class House:
 	def __init__(self, name, sqFt):
