@@ -54,7 +54,11 @@ class ShoppingList:
 			print(f"You will need {self.colorData[color]} square feet of {color},") # to print how much of each color is needed
 			# catch keyerror exception here
 			cost = Decimal('0.00')
-			cost = Decimal(self.colorData[color] * self.colorCosts[color]) # multiply square feet by price per square foot
+			if color in self.colorCosts: # check if color exists in colorCosts dictionary
+				thisColorCost = self.colorCosts[color]
+			else:
+				thisColorCost = Decimal('0.00') # if color is not in colorCosts dictionary, use 0. this prevents keyerror on nonexistent key
+			cost = Decimal(self.colorData[color] * thisColorCost) # multiply square feet by price per square foot
 			print(f"costing ${cost} total.")
 			totalCost += cost
 		print("")
