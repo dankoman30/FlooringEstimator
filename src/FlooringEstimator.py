@@ -13,7 +13,7 @@ class Room:
 		self.width = width
 		self.area = area
 		self.color = color
-		
+
 	def list(self):
 		return [self.name, self.length, self.width, self.area, self.color]
 		
@@ -22,7 +22,7 @@ class House:
 	def __init__(self, name, sqFt):
 		self.name = name
 		self.sqFt = sqFt
-	
+
 	def display(self):
 		print(f"{self.name} WILL NEED A TOTAL OF {self.sqFt} SQUARE FEET OF FLOORING MATERIAL!") # print total square units needed
 		print("")
@@ -135,8 +135,4 @@ house.display() # print data to terminal via House's display() method
 
 shoppingList = ShoppingList(houseName, colorData) # instantiate a new ShoppingList object
 shoppingList.display() # print data to terminal via ShoppingList's display() method
-
-#print(house.colorData)
-
-
 
